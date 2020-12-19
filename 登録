@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会員登録</title>
+    <link rel="shortcu icon" href="ウサギ.ico"/>
+    <script src="reg.js"></script>
+    <style>
+      .w {
+        width: 1200px;
+        margin: 0 auto;
+      }
+      header {
+        height: 84px;
+        border-bottom: 2px solid #c81523;
+      }
+      .logo {
+        padding-top: 18px;
+      }
+      .ul,li {
+        list-style: none;
+      }
+      .registerarea {
+        height: 522px;
+        border: 1px solid #cccccc;
+        margin-top: 10px;
+        
+      }
+      .registerarea h3 {
+        height: 42px;
+        border-bottom: 1px solid #cccccc;
+        background-color: #ececec;
+        line-height: 42px;
+        padding: 0 10px;
+        font-size: 16px;
+        font-weight: 400;
+      }
+      .login {
+        line-height: 42px;
+        padding: 0 10px;
+        float: right;
+        font-weight: normal;
+        font-size: small;
+      }
+      .reg_form {
+       width: 500px;
+       margin: 50px auto 0;
+      }
+      .reg_form ul li .inp {
+        margin-bottom: 20px;
+      }
+      .reg_form ul li label {
+        display: inline-block;
+        width: 130px;
+        text-align: left;
+      }
+      .safe {
+        padding-left: 300px;
+        font-size: small;
+      }
+      .safe em {
+        padding: 0 10px;
+        color: #ffffff;
+      }
+      .error {
+        color: #de1111;
+      }
+      .error_icon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        background: url(image/感嘆.png) no-repeat;
+        margin-top: -2px;
+      }
+      .success {
+        color: #00ab6b;
+      }
+      .success_icon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+        background: url(image/success.png) no-repeat;
+        margin-top: -2px;
+      }
+      .agree input {
+        vertical-align: middle;
+      }
+      .agree {
+        font-size: xx-small;
+      }
+      .btn {
+        font-size: 14px;
+        color: #ffffff;
+        margin: 30px 0 0 70px;
+      }
+      .namebox {
+        width: 400px;
+        border-bottom: 1px solid #cccc;
+      }
+      .namebox input {
+        width: 370px;
+        height: 30px;
+        border: 0;
+        outline: none;
+      }
+      .passwordbox {
+        width: 400px;
+        border-bottom: 1px solid #cccc;
+      }
+      .passwordbox input {
+        width: 370px;
+        height: 30px;
+        border: 0;
+        outline: none;
+      }
+      .mailbox input {
+        width: 370px;
+        height: 30px;
+        border: 0;
+        outline: none;
+      }
+      .mod_copyright {
+        text-align: center;
+        padding-top: 20px;
+      }
+      .links {
+        margin-bottom: 0 15px;
+      }
+      .links a {
+        margin: 0 3px;
+      }
+    </style>
+    </head>
+<body>
+      <div class="w">
+        <header>
+          <div class="logo">
+            <a href="#"></a><img src="image/animal.png" alt="">
+          </div>
+        </header>
+        <div class="registerarea">
+          <h3>アカウント新規登録
+            <div class="login">すでにアカウントをお持ちですか？<a href="#">サインイン</a></div>
+          </h3>
+          <div class="reg_form">
+            <form action="" id="情報" action="https://yulogin.azurewebsites.net/api/HttpTrigger1" method="GET">
+              <ul>
+                  <div class="namebox"><label for="test">名前：</label> <input type="text" placeholder="名前を入力してください"  　id="customerName" maxlength="6" class="inp"></div>
+            
+                  <div class="namebox"><label for="test">フリガナ：</label> <input type="text" placeholder="フリガナを入力してください"　id="ap_customerName" maxlength="20" class="inp"></div>  
+
+                   <li>
+                    <label for="mailad">メールアドレス：</label> <input type="email" size='57' style='border: 0px;border-bottom: #cccc 1px solid;'class="form-control" placeholder="メールアドレスを入力してください" class="inp" id="mailad">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class=""></span>
+                    </li>
+                    <script>
+                      window.onload = function() {
+                        var regmailad = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/; //メールアドレス正規表現
+                        var mailad =document.querySelector('#mailad');
+                        mailad.onblur = function() {
+                          if (regmailad.test(this.value)) {
+                            //console.log('あってる');
+                            this.nextElementSibling.className = 'success';
+                            this.nextElementSibling.innerHTML = '<i class="success_icon"></i>メールアドレスの格式が正しいです' ;
+                          } else {
+                            //console.log ('あってない');
+                            this.nextElementSibling.className = 'error';
+                            this.nextElementSibling.innerHTML = '<i class="error_icon"></i>正しいメールアドレスを入力してください' ;
+                          }
+                            
+                          }
+                        }
+                      
+                    </script>
+                  <li><label for="test">パスワード：</label>
+                      <input type="password" class="form-control" size='57' style='border: 0px;border-bottom: #cccc 1px solid;'　id="PW" maxlength="10" class="inp">
+                    
+                  <li class="agree"><input type="checkbox" name="" id="">ログインすることにより、当社の<a href="#">利用規約およびプライバシー規約</a>に同意したとみなされます。</li>
+                  <li class="btn">
+                    <input type="submit" value="アカウント作成"　>
+                  </li>
+            
+              </ul>
+            </form>
+            
+            </div>
+        </div>
+        <footer>
+          <div class="mod_copyright">
+            <div class="links"></div>
+            <a href="#">利用規約</a> | <a href="#">プライバシー規約</a> | <a href="#">ヘルプ</a>
+          </div>
+        </footer>
+      </div>
+</div>
+
+
+</div>
+</div>
+</body>
+</html>
